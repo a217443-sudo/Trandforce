@@ -1,0 +1,11 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #f4f6fb; }
+header { background: #1f3c88; color: #fff; padding: 12px 20px; display: flex; justify-content: space-between; }
+main { padding: 20px; }
+.card { background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+label { display: block; margin: 8px 0; }
+input, select, button { padding: 6px; margin-left: 6px; }
+table { border-collapse: collapse; width: 100%; background: #fff; }
+th, td { border: 1px solid #ddd; padding: 8px; }
+th { background: #e8eefc; }
+.flash { list-style: none; color: #b00020; }
+a { color: #1f3c88; }

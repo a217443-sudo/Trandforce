@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>主管儀表板（年度 {{ year }}）</h2>
+<form method="get" action="{{ url_for('dashboard') }}">
+  <label>年度 <input type="number" name="year" min="2026" value="{{ year }}"></label>
+  <button type="submit">切換</button>
+</form>
+<table>
+  <tr><th>部門</th><th>同仁</th><th>OKR數量</th><th>操作</th></tr>
+  {% for e in employees %}
+  <tr>
+    <td>{{ e.department }}</td>
+    <td>{{ e.name }}</td>
+    <td>{{ stats_map.get(e.id, 0) }}</td>
+    <td><a href="{{ url_for('employee_goals', employee_id=e.id, year=year) }}">管理目標</a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
