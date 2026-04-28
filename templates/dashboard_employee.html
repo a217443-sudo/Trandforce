@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>我的 OKR（年度 {{ year }}）</h2>
+<form method="get" action="{{ url_for('dashboard') }}">
+  <label>年度 <input type="number" name="year" min="2026" value="{{ year }}"></label>
+  <button type="submit">切換</button>
+</form>
+<table>
+  <tr><th>Objective</th><th>KR</th><th>Target</th><th>年中%</th><th>年底%</th><th>1-5分</th></tr>
+  {% for g in goals %}
+  <tr>
+    <td>{{ g.objective }}</td>
+    <td>{{ g.key_result }}</td>
+    <td>{{ g.target }}</td>
+    <td>{{ g.mid_progress }}</td>
+    <td>{{ g.end_progress }}</td>
+    <td>{{ g.score or '-' }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
