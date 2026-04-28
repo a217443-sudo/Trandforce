@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>基金理財儀表板｜安聯台灣科技・統一奔騰</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>基金理財儀表板</h1>
+      <p>
+        追蹤「安聯台灣科技」與「統一奔騰」的近況，透過簡單量化規則提供
+        <strong>投入 / 觀望 / 贖回</strong> 建議。
+      </p>
+      <p class="notice">
+        ⚠️ 本工具僅供教育與決策輔助，不構成任何投資建議。
+      </p>
+    </header>
+
+    <main>
+      <section class="panel controls">
+        <h2>資料來源設定</h2>
+        <p>
+          直接貼上每檔基金最近每日淨值（CSV）：<code>date,nav</code>，例如：
+          <code>2026-04-28,78.31</code>
+        </p>
+        <div class="input-grid">
+          <div>
+            <label for="allianzData">安聯台灣科技</label>
+            <textarea id="allianzData" rows="10"></textarea>
+          </div>
+          <div>
+            <label for="uniData">統一奔騰</label>
+            <textarea id="uniData" rows="10"></textarea>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="sampleBtn" type="button">載入示範資料</button>
+          <button id="analyzeBtn" type="button" class="primary">開始分析</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>你的投資參數</h2>
+        <div class="input-grid slim">
+          <div>
+            <label for="riskProfile">風險屬性</label>
+            <select id="riskProfile">
+              <option value="conservative">保守</option>
+              <option value="balanced" selected>穩健</option>
+              <option value="aggressive">積極</option>
+            </select>
+          </div>
+          <div>
+            <label for="horizon">投資期間</label>
+            <select id="horizon">
+              <option value="short">短期（< 1 年）</option>
+              <option value="mid" selected>中期（1-3 年）</option>
+              <option value="long">長期（> 3 年）</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="resultPanel" hidden>
+        <h2>分析結果</h2>
+        <div id="summaryCards" class="cards"></div>
+        <div id="globalAdvice" class="advice"></div>
+      </section>
+    </main>
+
+    <footer>
+      <small>
+        計算依據：1日 / 5日 / 20日報酬、5日與20日均線、波動度、回撤。資料正確性請以基金公司或銷售機構公告為準。
+      </small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
